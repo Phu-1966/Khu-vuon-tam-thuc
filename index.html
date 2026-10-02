@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Gò Cao — Phía sau bức tường</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">GÒ CAO <span>Trí tuệ và Khoa học</span></div>
+  <nav><a href="#library">THƯ VIỆN</a><a href="#reader">ĐỌC SÁCH</a><a href="con-suoi/">CON SUỐI</a><a href="#about">GIỚI THIỆU</a></nav>
+</header>
+
+<main>
+<section class="hero" id="library">
+  <div class="books">
+    <div class="eyebrow">BỘ SÁCH VỀ NHẬN THỨC</div>
+    <button class="book-row active">01 <span>|</span> Phía sau bức tường</button>
+    <button class="book-row">02 <span>|</span> Ảo ảnh trung tâm</button>
+    <button class="book-row">03 <span>|</span> Giữa hai thế giới</button>
+    <button class="book-row">04 <span>|</span> Sống không đối kháng</button>
+    <button class="book-row">05 <span>|</span> Kiến tạo từ rỗng không</button>
+    <button class="book-row">06 <span>|</span> Không biết không cầu</button>
+    <div class="more">... và nhiều cuốn khác</div>
+  </div>
+
+  <div class="cover-wrap"><img src="cover.jpg" alt="Bìa Phía sau bức tường"></div>
+
+  <div class="book-info">
+    <h1>PHÍA SAU<br>BỨC TƯỜNG</h1>
+    <p>Một hành trình làm mỏng<br>những bức tường vô hình của nhận thức</p>
+    <button class="btn primary" id="openBook">▣ &nbsp; ĐỌC SÁCH</button>
+    <button class="btn secondary" disabled>◉ &nbsp; NGHE SÁCH</button>
+    <small>Với giọng đọc của chính tác giả</small>
+    <button class="btn secondary">ⓘ &nbsp; THÔNG TIN SÁCH</button>
+  </div>
+</section>
+
+<section class="reader-shell" id="reader">
+  <aside class="toc">
+    <div class="toc-title">MỤC LỤC</div>
+    <div id="toc"><div class="muted">Bấm “Đọc sách” để mở mục lục.</div></div>
+  </aside>
+
+  <section class="reader">
+    <div class="reader-bar">
+      <span>Phía sau bức tường</span>
+      <div class="tools">
+        <button id="back10" title="Lùi 10 trang">‹ 10</button>
+        <button id="fontMinus">A−</button>
+        <button id="fontPlus">A+</button>
+        <button id="forward10" title="Tiến 10 trang">10 ›</button>
+      </div>
+    </div>
+
+    <div id="viewer">
+      <div id="readerState" class="state">
+        <div>
+          <strong>Phía sau bức tường</strong>
+          <p>Bấm <b>Đọc sách</b> để bắt đầu.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="reader-footer">
+      <button id="prev">←</button>
+      <span id="location">Chưa mở sách</span>
+      <button id="next">→</button>
+    </div>
+  </section>
+</section>
+
+<section class="features" id="about">
+  <div><b>◌ &nbsp; KHÔNG GIAN ĐỌC YÊN TĨNH</b><p>Giao diện tối giản giúp bạn tập trung vào nội dung và trải nghiệm đọc sâu.</p></div>
+  <div><b>▣ &nbsp; ĐỌC MỌI LÚC, MỌI NƠI</b><p>Tương thích trên điện thoại, máy tính bảng và máy tính.</p></div>
+  <div><b>♡ &nbsp; GHI CHÚ & ĐÁNH DẤU</b><p>Khung giao diện đã sẵn sàng để phát triển các tính năng đọc cá nhân.</p></div>
+  <div><b>♧ &nbsp; HÀNH TRÌNH NHẬN THỨC</b><p>Mỗi cuốn sách là một chặng đường. Gò Cao là nơi ta cùng nhau đi chậm và nhận ra.</p></div>
+</section>
+</main>
+
+<footer>© 2026 GÒ CAO — Trí tuệ và Khoa học <span>Mỗi cuốn sách là một cuộc gặp gỡ</span></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/epubjs@0.3.93/dist/epub.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
