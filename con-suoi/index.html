@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Khu Vườn Tâm Thức — Con Suối</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;color:#253525;background:#f4f1e5;font-family:Georgia,"Times New Roman",serif}
+header{height:72px;background:rgba(250,248,239,.96);display:flex;align-items:center;padding:0 28px;gap:28px;position:sticky;top:0;z-index:5;border-bottom:1px solid #d9d6c5}
+.brand{font-size:21px;letter-spacing:.06em;white-space:nowrap}
+nav{display:flex;gap:24px;font-size:15px;flex:1;justify-content:center}
+nav a{text-decoration:none;color:#3c4638;padding:8px 0}
+nav a.active{border-bottom:2px solid #6d8552}
+.search{border:1px solid #d5d2c2;border-radius:28px;padding:10px 18px;color:#777;background:#fffdf7}
+.hero{min-height:470px;background-image:linear-gradient(90deg,rgba(14,35,18,.62),rgba(14,35,18,.10) 58%,rgba(14,35,18,.05)),url("hero.jpg");background-size:cover;background-position:center;display:flex;align-items:flex-end;padding:58px 8vw}
+.hero-copy{color:white;max-width:620px;text-shadow:0 2px 18px rgba(0,0,0,.35)}
+.kicker{font-size:16px;letter-spacing:.2em}
+h1{font-size:66px;line-height:1;margin:10px 0}
+.subtitle{font-size:25px;font-style:italic}
+.hero-copy p{font-size:20px;line-height:1.55;max-width:570px}
+.wrap{max-width:1280px;margin:auto;padding:42px 30px 80px;display:grid;grid-template-columns:205px 1fr;gap:36px}
+.side{background:rgba(255,253,245,.9);border-radius:20px;padding:20px;height:max-content;box-shadow:0 10px 35px rgba(57,70,42,.10)}
+.side h3{margin-top:0;font-size:16px}
+.side div{padding:13px 10px;border-radius:12px;margin:5px 0}
+.side .on{background:#718b57;color:white}
+.main h2{font-size:34px;font-weight:normal;margin:0 0 8px}
+.intro{color:#697161;margin:0 0 28px}
+.grid{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:28px 18px}
+.book{cursor:pointer;transition:transform .35s ease;position:relative}
+.book:hover{transform:translateY(-8px)}
+.cover{aspect-ratio:3/4.3;border-radius:8px;overflow:hidden;box-shadow:0 12px 24px rgba(37,53,37,.22);background:#dfe6d5}
+.cover img{width:100%;height:100%;object-fit:cover;object-position:center}
+.placeholder{height:100%;padding:22px 12px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:linear-gradient(145deg,#edf0df,#cbd8bd);color:#34452f}
+.placeholder strong{font-size:20px;font-weight:normal}
+.placeholder small{margin-top:12px}
+.bookname{text-align:center;margin-top:10px;font-size:16px}
+.bookhint{text-align:center;margin-top:5px;font-size:13px;color:#77816f}
+.ripple{position:fixed;pointer-events:none;width:20px;height:20px;border:2px solid rgba(115,160,128,.7);border-radius:50%;transform:translate(-50%,-50%) scale(.2);animation:ripple .55s ease-out forwards;z-index:20}
+@keyframes ripple{to{transform:translate(-50%,-50%) scale(9);opacity:0}}
+.reader{display:none;position:fixed;inset:0;background:#f7f4ea;z-index:30;overflow:auto}
+.reader.open{display:block}
+.readerbar{height:64px;background:#fbfaf4;border-bottom:1px solid #ddd8c7;display:flex;align-items:center;justify-content:space-between;padding:0 22px;position:sticky;top:0}
+.back{border:0;background:none;font:inherit;color:#53664b;cursor:pointer}
+.readerbody{max-width:760px;margin:70px auto;padding:0 26px 100px}
+.readerbody h2{font-size:42px;text-align:center;font-weight:normal}
+.readerbody .rsub{text-align:center;font-style:italic;color:#6f776a;margin-bottom:60px}
+.readerbody p{font-size:21px;line-height:1.9;margin:0 0 28px}
+.note{text-align:center;color:#76816f;font-style:italic;margin-top:70px}
+@media(max-width:900px){nav{display:none}.grid{grid-template-columns:repeat(2,1fr)}.wrap{grid-template-columns:1fr}.side{display:none}.hero{min-height:420px;padding:40px 28px}h1{font-size:48px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">🌿 KHU VƯỜN TÂM THỨC</div>
+  <nav>
+    <a>Trang chủ</a><a>Gò Cao</a><a class="active">Con Suối</a><a>Hồ Nước</a><a>Vườn Hoa</a><a>Hiên Nhà</a>
+  </nav>
+  <div class="search">⌕ &nbsp; Tìm sách...</div>
+</header>
+
+<section class="hero">
+  <div class="hero-copy">
+    <div class="kicker">💧 KHU SÁCH</div>
+    <h1>CON SUỐI</h1>
+    <div class="subtitle">Suối nguồn Kinh điển</div>
+    <p>Những dòng chảy trong trẻo,<br>nuôi dưỡng tâm hồn và soi sáng cuộc sống.</p>
+  </div>
+</section>
+
+<div class="wrap">
+  <aside class="side">
+    <h3>KHU VƯỜN</h3>
+    <div>⛰️ Gò Cao</div>
+    <div class="on">💧 Con Suối</div>
+    <div>🌊 Hồ Nước</div>
+    <div>🌸 Vườn Hoa</div>
+    <div>🏡 Hiên Nhà</div>
+  </aside>
+  <main class="main">
+    <h2>DÒNG SÁCH</h2>
+    <p class="intro">Bạn có thể dừng lại ở bất kỳ viên đá nào.</p>
+    <div class="grid">
+
+      <!-- VIÊN ĐÁ SỐ 01 -->
+      <div class="book" onclick="openBook(event)">
+        <div class="cover">
+          <img src="ech-con-ngay-tho-cover.png" alt="Bìa Ếch con ngây thơ — HẢO PHẠM">
+        </div>
+        <div class="bookname">01 · Ếch con ngây thơ</div>
+        <div class="bookhint">Chạm vào viên đá</div>
+      </div>
+
+      <div class="book"><div class="cover"><div class="placeholder"><strong>CON CÒ</strong><small>HẢO PHẠM</small></div></div><div class="bookname">02 · Con Cò</div></div>
+      <div class="book"><div class="cover"><div class="placeholder"><strong>DÒNG SÔNG<br>KHÔNG BỜ</strong><small>HẢO PHẠM</small></div></div><div class="bookname">03 · Dòng sông không bờ</div></div>
+      <div class="book"><div class="cover"><div class="placeholder"><strong>CÁI AO LÀNG</strong><small>HẢO PHẠM</small></div></div><div class="bookname">04 · Cái Ao làng</div></div>
+      <div class="book"><div class="cover"><div class="placeholder"><strong>KHU VƯỜN<br>TRƯỚC SÂN</strong><small>HẢO PHẠM</small></div></div><div class="bookname">05 · Khu vườn trước sân</div></div>
+      <div class="book"><div class="cover"><div class="placeholder"><strong>CĂN NHÀ<br>MÁI LÁ</strong><small>HẢO PHẠM</small></div></div><div class="bookname">06 · Căn nhà mái lá</div></div>
+      <div class="book"><div class="cover"><div class="placeholder"><strong>DÒNG CHẢY<br>VÔ TẬN</strong><small>HẢO PHẠM</small></div></div><div class="bookname">07 · Dòng chảy vô tận</div></div>
+      <div class="book"><div class="cover"><div class="placeholder"><strong>VỀ NƠI<br>RỖNG RANG</strong><small>HẢO PHẠM</small></div></div><div class="bookname">08 · Về nơi rỗng rang</div></div>
+      <div class="book"><div class="cover"><div class="placeholder"><strong>DÒNG CHẢY<br>TỰ NHIÊN</strong><small>HẢO PHẠM</small></div></div><div class="bookname">09 · Dòng chảy tự nhiên</div></div>
+      <div class="book"><div class="cover"><div class="placeholder"><strong>NĂM CÁNH HOA</strong><small>HẢO PHẠM</small></div></div><div class="bookname">10 · Năm cánh hoa</div></div>
+    </div>
+  </main>
+</div>
+
+<section id="reader" class="reader">
+  <div class="readerbar">
+    <button class="back" onclick="closeReader()">← Trở lại Con Suối</button>
+    <span>ẾCH CON NGÂY THƠ · HẢO PHẠM</span>
+    <a href="Ech_con_ngay_tho_HAO_PHAM_V9_FINAL.epub" style="color:#53664b;text-decoration:none" download>EPUB V9</a>
+  </div>
+  <article class="readerbody">
+    <h2>ẾCH CON NGÂY THƠ</h2>
+    <div class="rsub">Hành trình trở về viên ngọc trong túi áo · HẢO PHẠM</div>
+    <p>Trong mỗi chúng ta đều có một viên ngọc quý bị bỏ quên trong một chiếc túi áo cũ.</p>
+    <p>Không phải vì nó không sáng.</p>
+    <p>Chỉ là bụi bám lâu quá, mình quên mất nó từng ở đó.</p>
+    <p class="note">Chạm → gợn nước → mở sách.</p>
+  </article>
+</section>
+
+<script>
+function openBook(e){
+  const r=document.createElement('div');
+  r.className='ripple'; r.style.left=e.clientX+'px'; r.style.top=e.clientY+'px';
+  document.body.appendChild(r);
+  setTimeout(()=>r.remove(),600);
+  setTimeout(()=>{
+    document.getElementById('reader').classList.add('open');
+  },430);
+}
+function closeReader(){document.getElementById('reader').classList.remove('open')}
+</script>
+</body>
+</html>
