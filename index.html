@@ -65,7 +65,7 @@ body{margin:0;background:var(--deep);color:var(--paper);font-family:Georgia,"Tim
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.leaf-button,.leaf-button img{transition:none}.leaf-button.selected:after{animation:none}}
 
-/* V12 — Mặt hồ dùng ảnh thật do người dùng chọn; giữ nguyên video và bố cục lá. */
+/* V13 — Mặt hồ giữ nguyên; thay hình minh họa bằng ảnh lá thật đã tách nền. */
 .continuous-water{position:relative;isolation:isolate;background-color:#163b37;background-image:linear-gradient(180deg,rgba(9,30,27,.20),rgba(7,28,28,.16) 42%,rgba(7,27,27,.22)),url("mat-ho-that.jpg");background-size:cover;background-position:center top;background-repeat:no-repeat}
 .continuous-water:before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;background:linear-gradient(180deg,rgba(14,36,32,.04),rgba(9,31,30,.08) 30%,rgba(8,28,28,.16) 62%,rgba(12,34,30,.04))}
 .continuous-water:after{content:none}
@@ -78,6 +78,28 @@ body{margin:0;background:var(--deep);color:var(--paper);font-family:Georgia,"Tim
 .continuous-water .leaf-button img{filter:drop-shadow(0 7px 8px rgba(0,0,0,.48)) drop-shadow(0 1px 1px rgba(244,224,178,.18))}
 .continuous-water .book-panel{background:rgba(12,34,32,.76);backdrop-filter:blur(5px);border-color:rgba(213,174,112,.55)}
 @media(max-width:720px){.continuous-water .pond{padding-top:30px;padding-bottom:42px}.continuous-water .leaf-field{gap:0 8px}}
+
+/* V13 — Ảnh lá thật đã tách nền; tên sách nằm dưới lá để đọc rõ trên điện thoại. */
+.continuous-water .leaf-field{gap:18px 22px;padding:26px 12px 22px}
+.continuous-water .leaf-button{flex-direction:column;justify-content:flex-start;align-items:center;gap:8px;min-height:190px;border-radius:16px;padding:8px 5px}
+.continuous-water .leaf-button img{width:min(100%,150px);height:112px;object-fit:contain;filter:drop-shadow(0 5px 7px rgba(0,0,0,.42));animation:leafDrift 6s ease-in-out infinite;transform-origin:center center}
+.continuous-water .leaf-button:nth-child(2n) img{animation-delay:-1.8s}
+.continuous-water .leaf-button:nth-child(3n) img{animation-delay:-3.1s}
+.continuous-water .leaf-button:nth-child(4n) img{animation-delay:-4.4s}
+.continuous-water .leaf-button:hover img,.continuous-water .leaf-button:focus-visible img{transform:translateY(-4px) rotate(0deg) scale(1.04)}
+.continuous-water .leaf-button.selected img{animation-play-state:paused;transform:scale(1.06) rotate(-4deg)}
+.continuous-water .leaf-label{display:block;max-width:180px;width:100%;font-size:clamp(14px,1.4vw,17px);line-height:1.35;text-align:center;overflow-wrap:normal;word-break:normal;text-wrap:balance}
+@keyframes leafDrift{0%,100%{translate:0 0;rotate:-1.5deg}50%{translate:0 -3px;rotate:1.5deg}}
+@media(max-width:720px){
+ .continuous-water .pond{padding-top:24px;padding-bottom:36px}
+ .continuous-water .leaf-field{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 8px;padding:14px 4px 18px}
+ .continuous-water .leaf-button{min-height:156px;padding:6px 2px;gap:5px}
+ .continuous-water .leaf-button img{width:min(100%,126px);height:92px}
+ .continuous-water .leaf-label{max-width:158px;font-size:15px;line-height:1.32}
+ .continuous-water .book-panel{margin-left:4px;margin-right:4px}
+}
+@media(prefers-reduced-motion:reduce){.continuous-water .leaf-button img{animation:none}}
+
 </style>
 </head>
 <body>
@@ -89,17 +111,17 @@ body{margin:0;background:var(--deep);color:var(--paper);font-family:Georgia,"Tim
 </section>
 <section class="transition-title"><p>Mỗi cuốn sách là một chiếc lá trên mặt hồ.</p><div class="ornament">— ❧ —</div><div style="margin-top:14px;font-size:12px;letter-spacing:.12em;color:#d4c9ad;opacity:.82">Một góc ao quê · Nước lắng, lá trôi</div></section>
 <main class="continuous-water"><section id="mat-ho-nong" class="pond light" aria-label="01 · MẶT HỒ NÔNG">
-<div class="leaf-field"><button class="leaf-button" data-title="Nước mắm" data-note="Một vị mặn thân thuộc của đời sống." aria-label="Xem sách Nước mắm"><img src="la-01.svg" alt="Chiếc lá Việt Nam trên mặt hồ"><span class="leaf-label">Nước mắm</span></button><button class="leaf-button" data-title="Ủ tương" data-note="Thời gian âm thầm làm nên hương vị." aria-label="Xem sách Ủ tương"><img src="la-02.svg" alt="Chiếc lá Việt Nam trên mặt hồ"><span class="leaf-label">Ủ tương</span></button><button class="leaf-button" data-title="Rượu nếp cái" data-note="Men nồng của hạt gạo và ký ức." aria-label="Xem sách Rượu nếp cái"><img src="la-03.svg" alt="Chiếc lá Việt Nam trên mặt hồ"><span class="leaf-label">Rượu nếp cái</span></button><button class="leaf-button" data-title="Trà" data-note="Một chén trà, một khoảng lặng." aria-label="Xem sách Trà"><img src="la-04.svg" alt="Chiếc lá Việt Nam trên mặt hồ"><span class="leaf-label">Trà</span></button><button class="leaf-button" data-title="Trầm tích của tâm" data-note="Những gì lắng lại qua tháng năm." aria-label="Xem sách Trầm tích của tâm"><img src="la-05.svg" alt="Chiếc lá Việt Nam trên mặt hồ"><span class="leaf-label">Trầm tích của tâm</span></button></div>
+<div class="leaf-field"><button class="leaf-button" data-title="Nước mắm" data-note="Một vị mặn thân thuộc của đời sống." aria-label="Xem sách Nước mắm"><img src="la-01.png" alt="Chiếc lá Việt Nam trên mặt hồ"><span class="leaf-label">Nước mắm</span></button><button class="leaf-button" data-title="Ủ tương" data-note="Thời gian âm thầm làm nên hương vị." aria-label="Xem sách Ủ tương"><img src="la-02.png" alt="Chiếc lá Việt Nam trên mặt hồ"><span class="leaf-label">Ủ tương</span></button><button class="leaf-button" data-title="Rượu nếp cái" data-note="Men nồng của hạt gạo và ký ức." aria-label="Xem sách Rượu nếp cái"><img src="la-03.png" alt="Chiếc lá Việt Nam trên mặt hồ"><span class="leaf-label">Rượu nếp cái</span></button><button class="leaf-button" data-title="Trà" data-note="Một chén trà, một khoảng lặng." aria-label="Xem sách Trà"><img src="la-04.png" alt="Chiếc lá Việt Nam trên mặt hồ"><span class="leaf-label">Trà</span></button><button class="leaf-button" data-title="Trầm tích của tâm" data-note="Những gì lắng lại qua tháng năm." aria-label="Xem sách Trầm tích của tâm"><img src="la-05.png" alt="Chiếc lá Việt Nam trên mặt hồ"><span class="leaf-label">Trầm tích của tâm</span></button></div>
 <div class="leaf-note">Chạm vào một chiếc lá để gặp cuốn sách</div>
 <div class="book-panel" aria-live="polite"><strong></strong><span></span></div>
 </section>
 <section id="mat-ho-sau" class="pond deep" aria-label="02 · MẶT HỒ SÂU">
-<div class="leaf-field"><button class="leaf-button" data-title="Ve rỗng" data-note="Một chiếc vỏ còn đó sau cuộc hóa thân." aria-label="Xem sách Ve rỗng"><img src="la-06.svg" alt="Chiếc lá Việt Nam trên mặt hồ"><span class="leaf-label">Ve rỗng</span></button><button class="leaf-button" data-title="Tơ tằm và khoảng rỗng" data-note="Sợi tơ mảnh đi qua khoảng không." aria-label="Xem sách Tơ tằm và khoảng rỗng"><img src="la-07.svg" alt="Chiếc lá Việt Nam trên mặt hồ"><span class="leaf-label">Tơ tằm và khoảng rỗng</span></button><button class="leaf-button" data-title="Nỗi buồn của rừng" data-note="Một nỗi buồn xanh và sâu." aria-label="Xem sách Nỗi buồn của rừng"><img src="la-08.svg" alt="Chiếc lá Việt Nam trên mặt hồ"><span class="leaf-label">Nỗi buồn của rừng</span></button><button class="leaf-button" data-title="Tơ hồng và khoảng rỗng" data-note="Sợi duyên mảnh giữa có và không." aria-label="Xem sách Tơ hồng và khoảng rỗng"><img src="la-09.svg" alt="Chiếc lá Việt Nam trên mặt hồ"><span class="leaf-label">Tơ hồng và khoảng rỗng</span></button><button class="leaf-button" data-title="Tiếng bổi của rỗng không" data-note="Âm vang khẽ của một khoảng trống." aria-label="Xem sách Tiếng bổi của rỗng không"><img src="la-10.svg" alt="Chiếc lá Việt Nam trên mặt hồ"><span class="leaf-label">Tiếng bổi của rỗng không</span></button></div>
+<div class="leaf-field"><button class="leaf-button" data-title="Ve rỗng" data-note="Một chiếc vỏ còn đó sau cuộc hóa thân." aria-label="Xem sách Ve rỗng"><img src="la-06.png" alt="Chiếc lá Việt Nam trên mặt hồ"><span class="leaf-label">Ve rỗng</span></button><button class="leaf-button" data-title="Tơ tằm và khoảng rỗng" data-note="Sợi tơ mảnh đi qua khoảng không." aria-label="Xem sách Tơ tằm và khoảng rỗng"><img src="la-07.png" alt="Chiếc lá Việt Nam trên mặt hồ"><span class="leaf-label">Tơ tằm và khoảng rỗng</span></button><button class="leaf-button" data-title="Nỗi buồn của rừng" data-note="Một nỗi buồn xanh và sâu." aria-label="Xem sách Nỗi buồn của rừng"><img src="la-08.png" alt="Chiếc lá Việt Nam trên mặt hồ"><span class="leaf-label">Nỗi buồn của rừng</span></button><button class="leaf-button" data-title="Tơ hồng và khoảng rỗng" data-note="Sợi duyên mảnh giữa có và không." aria-label="Xem sách Tơ hồng và khoảng rỗng"><img src="la-09.png" alt="Chiếc lá Việt Nam trên mặt hồ"><span class="leaf-label">Tơ hồng và khoảng rỗng</span></button><button class="leaf-button" data-title="Tiếng bổi của rỗng không" data-note="Âm vang khẽ của một khoảng trống." aria-label="Xem sách Tiếng bổi của rỗng không"><img src="la-10.png" alt="Chiếc lá Việt Nam trên mặt hồ"><span class="leaf-label">Tiếng bổi của rỗng không</span></button></div>
 <div class="leaf-note">Chạm vào một chiếc lá để gặp cuốn sách</div>
 <div class="book-panel" aria-live="polite"><strong></strong><span></span></div>
 </section>
 <section id="mat-ho-sang" class="pond light" aria-label="03 · TRỞ VỀ MẶT NƯỚC">
-<div class="leaf-field"><button class="leaf-button" data-title="Tâm thế Hoàng Đàn" data-note="Hương gỗ trầm lặng và bền lâu." aria-label="Xem sách Tâm thế Hoàng Đàn"><img src="la-11.svg" alt="Chiếc lá Việt Nam trên mặt hồ"><span class="leaf-label">Tâm thế Hoàng Đàn</span></button><button class="leaf-button" data-title="Phiến đá biết thở" data-note="Sự sống thầm thì trong điều tưởng như bất động." aria-label="Xem sách Phiến đá biết thở"><img src="la-12.svg" alt="Chiếc lá Việt Nam trên mặt hồ"><span class="leaf-label">Phiến đá biết thở</span></button><button class="leaf-button" data-title="Chiến kê" data-note="Một dáng vẻ mạnh mẽ của đời sống." aria-label="Xem sách Chiến kê"><img src="la-13.svg" alt="Chiếc lá Việt Nam trên mặt hồ"><span class="leaf-label">Chiến kê</span></button><button class="leaf-button" data-title="Con cua" data-note="Một sinh linh nhỏ bé bên bờ nước." aria-label="Xem sách Con cua"><img src="la-14.svg" alt="Chiếc lá Việt Nam trên mặt hồ"><span class="leaf-label">Con cua</span></button></div>
+<div class="leaf-field"><button class="leaf-button" data-title="Tâm thế Hoàng Đàn" data-note="Hương gỗ trầm lặng và bền lâu." aria-label="Xem sách Tâm thế Hoàng Đàn"><img src="la-11.png" alt="Chiếc lá Việt Nam trên mặt hồ"><span class="leaf-label">Tâm thế Hoàng Đàn</span></button><button class="leaf-button" data-title="Phiến đá biết thở" data-note="Sự sống thầm thì trong điều tưởng như bất động." aria-label="Xem sách Phiến đá biết thở"><img src="la-12.png" alt="Chiếc lá Việt Nam trên mặt hồ"><span class="leaf-label">Phiến đá biết thở</span></button><button class="leaf-button" data-title="Chiến kê" data-note="Một dáng vẻ mạnh mẽ của đời sống." aria-label="Xem sách Chiến kê"><img src="la-13.png" alt="Chiếc lá Việt Nam trên mặt hồ"><span class="leaf-label">Chiến kê</span></button><button class="leaf-button" data-title="Con cua" data-note="Một sinh linh nhỏ bé bên bờ nước." aria-label="Xem sách Con cua"><img src="la-14.png" alt="Chiếc lá Việt Nam trên mặt hồ"><span class="leaf-label">Con cua</span></button></div>
 <div class="leaf-note">Chạm vào một chiếc lá để gặp cuốn sách</div>
 <div class="book-panel" aria-live="polite"><strong></strong><span></span></div>
 </section>
