@@ -24,6 +24,150 @@ button{border:1px solid #b7a27f;background:#fffaf0;color:#29443a;padding:8px 13p
 <div id="status">Một cuốn sách bên mặt hồ.</div>
 <div id="viewer" aria-label="Trang đọc sách"></div>
 <script src="https://cdn.jsdelivr.net/npm/epubjs@0.3.93/dist/epub.min.js"></script>
+
+<script>
+
+(async function () {
+
+  const status = document.getElementById('status');
+
+  const page = document.getElementById('page');
+
+  const prev = document.getElementById('prev');
+
+  const next = document.getElementById('next');
+
+  const bookUrl = './books/NUOC_MAM_HAO_PHAM_EPUB_V4.epub';
+
+  function showError(message) {
+
+    status.textContent = 'Chưa mở được sách: ' + message;
+
+    page.textContent = 'Lỗi mở sách';
+
+  }
+
+  try {
+
+    status.textContent = 'Đang kiểm tra thư viện đọc sách…';
+
+    if (typeof ePub !== 'function') {
+
+      throw new Error(
+
+        'Thư viện EPUB.js chưa tải được. Hãy kiểm tra kết nối mạng.'
+
+      );
+
+    }
+
+    status.textContent = 'Đang tải tệp EPUB…';
+
+    const response = await fetch(bookUrl, { cache: 'no-store' });
+
+    if (!response.ok) {
+
+      throw new Error(
+
+        'Không tìm thấy tệp sách (HTTP ' + response.status + ').'
+
+      );
+
+    }
+
+    const data = await response.arrayBuffer();
+
+    if (!data || data.byteLength === 0) {
+
+      throw new Error('Tệp EPUB không có dữ liệu.');
+
+    }
+
+    status.textContent = 'Đang đọc nội dung sách…';
+
+    const book = ePub(data);
+
+    const rendition = book.renderTo('viewer', {
+
+      width: '100%',
+
+      height: '100%',
+
+      flow: 'paginated',
+
+      spread: 'none',
+
+      manager: 'default'
+
+    });
+
+    rendition.themes.default({
+
+      body: {
+
+        'font-family': 'Georgia, "Times New Roman", serif',
+
+        'line-height': '1.7',
+
+        color: '#26352e',
+
+        padding: '0 5% !important'
+
+      },
+
+      p: {
+
+        'text-align': 'justify',
+
+        'line-height': '1.7'
+
+      }
+
+    });
+
+    rendition.on('relocated', loc => {
+
+      const displayed = loc && loc.start && loc.start.displayed;
+
+      page.textContent = displayed
+
+        ? 'Trang ' + displayed.page + ' / ' + displayed.total
+
+        : 'Đang đọc';
+
+      prev.disabled = !loc || loc.atStart;
+
+      next.disabled = !loc || loc.atEnd;
+
+    });
+
+    prev.addEventListener('click', () => rendition.prev());
+
+    next.addEventListener('click', () => rendition.next());
+
+    await book.ready;
+
+    status.textContent = 'Đang hiển thị trang sách…';
+
+    await rendition.display();
+
+    status.textContent = 'Sách đã mở. Chạm vào mũi tên để lật trang.';
+
+  } catch (err) {
+
+    console.error('Lỗi mở EPUB:', err);
+
+    showError(err && err.message ? err.message : 'Lỗi không xác định.');
+
+  }
+
+})();
+
+</script>
+
+</body>
+
+</html>
 <script>
 (async function(){
  const status=document.getElementById('status'), page=document.getElementById('page');
