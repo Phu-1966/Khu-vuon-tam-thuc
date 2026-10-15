@@ -158,7 +158,11 @@ document.querySelectorAll('.leaf-button').forEach(btn=>btn.addEventListener('cli
   const openLink=panel.querySelector('.book-open');
   if(openLink){
     if(btn.dataset.epub){
-      openLink.href='doc-sach.html';
+      openLink.href = btn.dataset.title === 'Ủ tương'
+
+  ? 'doc-sach-u-tuong.html'
+
+  : 'doc-sach.html';
       openLink.hidden=false;
       openLink.textContent='Mở sách ' + btn.dataset.title.toUpperCase();
       openLink.setAttribute('aria-label','Mở EPUB ' + btn.dataset.title);
