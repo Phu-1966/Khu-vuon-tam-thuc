@@ -24,7 +24,8 @@ button{border:1px solid #b7a27f;background:#fffaf0;color:#29443a;padding:8px 13p
 <div class="controls"><button id="jumpBack" aria-label="Lùi 10 trang">−10</button><button id="prev" aria-label="Trang trước" disabled>‹</button><span id="page">Đang chuẩn bị…</span><button id="next" aria-label="Trang sau" disabled>›</button><button id="jumpForward" aria-label="Tiến 10 trang">+10</button></div>
 <div id="status" role="status" aria-live="polite">Đang kết nối để mở sách…</div>
 <div id="viewer" aria-label="Trang đọc sách"></div>
-<script src="https://cdn.jsdelivr.net/npm/epubjs@0.3.93/dist/epub.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/epubjs@0.3.93/dist/epub.min.js"></script>
 <script>
 (async function(){
  const status=document.getElementById('status'), page=document.getElementById('page');
