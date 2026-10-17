@@ -223,9 +223,9 @@ document.querySelectorAll('.leaf-button').forEach(btn=>{
 
     const openLink=panel.querySelector('.book-open');
 
-    if(openLink && btn.dataset.epub){
+    const title=btn.dataset.title.trim();
 
-      const title=btn.dataset.title.trim();
+    if(openLink && btn.dataset.epub){
 
       if(title==='Ủ tương'){
 
@@ -274,12 +274,5 @@ document.querySelectorAll('.leaf-button').forEach(btn=>{
   });
 
 });
-    }else{
-      openLink.hidden=true;
-      openLink.removeAttribute('href');
-    }
-  }
-  panel.classList.remove('show');requestAnimationFrame(()=>panel.classList.add('show'));
-}));
 </script>
 </body></html>
