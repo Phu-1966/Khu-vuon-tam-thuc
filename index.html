@@ -180,7 +180,21 @@ body{margin:0;background:var(--deep);color:var(--paper);font-family:Georgia,"Tim
   <span class="leaf-label">Trà</span>
 
 </button>
- <button class="leaf-button" data-title="Trầm tích của tâm" data-note="Những gì lắng lại qua tháng năm." aria-label="Xem sách Trầm tích của tâm"><img src="la-05.png" alt="Chiếc lá Việt Nam trên mặt hồ"><span class="leaf-label">Trầm tích của tâm</span></button></div>
+ <button class="leaf-button"
+
+  data-title="Trầm tích của tâm"
+
+  data-note="Những gì lắng lại qua tháng năm."
+
+  data-epub="books/TRAM_TICH_CUA_TAM_HAO_PHAM_EPUB_V4.epub"
+
+  aria-label="Mở sách Trầm tích của tâm">
+
+  <img src="la-05.png" alt="Chiếc lá Trầm tích của tâm trên mặt hồ">
+
+  <span class="leaf-label">Trầm tích của tâm</span>
+
+</button>
 <div class="leaf-note">Chạm vào một chiếc lá để gặp cuốn sách</div>
 <div class="book-panel" aria-live="polite"><strong></strong><span></span><a class="book-open" href="#" hidden>Mở sách NƯỚC MẮM</a></div>
 </section>
@@ -257,6 +271,10 @@ document.querySelectorAll('.leaf-button').forEach(btn=>{
 }else if(title==='Trà'){
 
   openLink.href='doc-sach-tra.html';
+
+}else if(title==='Trầm tích của tâm'){
+
+  openLink.href='doc-sach-tram-tich-cua-tam.html';
 
 }else{
 
