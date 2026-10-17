@@ -162,46 +162,83 @@ body{margin:0;background:var(--deep);color:var(--paper);font-family:Georgia,"Tim
 const pondVideo=document.getElementById('hoNuocVideo');
 // Safari/iPhone: keep muted inline autoplay, and retain the poster if autoplay is restricted.
 if(pondVideo){pondVideo.muted=true;const attemptPlay=pondVideo.play();if(attemptPlay&&typeof attemptPlay.catch==='function')attemptPlay.catch(()=>{});}
-document.querySelectorAll('.leaf-button').forEach(btn=>btn.addEventListener('click',()=>{
-  const section=btn.closest('.pond');section.querySelectorAll('.leaf-button').forEach(x=>x.classList.remove('selected'));
-  btn.classList.add('selected');
-  btn.setAttribute('aria-pressed','true');
-  section.querySelectorAll('.leaf-button').forEach(x=>{if(x!==btn)x.setAttribute('aria-pressed','false')});
-  const panel=section.querySelector('.book-panel');
-  panel.querySelector('strong').textContent=btn.dataset.title;
-  panel.querySelector('span').textContent=btn.dataset.note;
-  const openLink=panel.querySelector('.book-open');
-  if(openLink){
-    if(btn.dataset.epub){
+document.querySelectorAll('.leaf-button').forEach(btn=>{
 
-  openLink.href =
+  btn.addEventListener('click',()=>{
 
-    btn.dataset.title === 'Ủ tương'
+    const section=btn.closest('.pond');
 
-      ? 'doc-sach-u-tuong.html'
+    section.querySelectorAll('.leaf-button').forEach(x=>{
 
-      : btn.dataset.title === 'Rượu nếp cái'
+      x.classList.remove('selected');
 
-        ? 'doc-sach-ruou-nep-cai.html'
+      x.setAttribute('aria-pressed','false');
 
-        : 'doc-sach.html';
+    });
 
-  openLink.hidden = false;
+    btn.classList.add('selected');
 
-  openLink.textContent = 'Mở sách ' + btn.dataset.title + ' →';
+    btn.setAttribute('aria-pressed','true');
 
-  openLink.setAttribute('aria-label', 'Mở sách ' + btn.dataset.title);
+    const panel=section.querySelector('.book-panel');
 
-}else{
+    panel.querySelector('strong').textContent=btn.dataset.title;
 
-  openLink.hidden = true;
+    panel.querySelector('span').textContent=btn.dataset.note;
 
-  openLink.removeAttribute('href');
+    const openLink=panel.querySelector('.book-open');
 
-}
-      openLink.hidden=false;
-      openLink.textContent='Mở sách ' + btn.dataset.title.toUpperCase();
-      openLink.setAttribute('aria-label','Mở EPUB ' + btn.dataset.title);
+    if(openLink && btn.dataset.epub){
+
+      const title=btn.dataset.title.trim();
+
+      if(title==='Ủ tương'){
+
+        openLink.href='doc-sach-u-tuong.html';
+
+      }else if(title==='Rượu nếp cái'){
+
+        openLink.href='doc-sach-ruou-nep-cai.html';
+
+      }else if(title==='Nước mắm'){
+
+        openLink.href='doc-sach.html';
+
+      }else{
+
+        openLink.removeAttribute('href');
+
+      }
+
+      if(openLink.hasAttribute('href')){
+
+        openLink.hidden=false;
+
+        openLink.textContent='Mở sách '+title+' →';
+
+        openLink.setAttribute('aria-label','Mở sách '+title);
+
+      }else{
+
+        openLink.hidden=true;
+
+      }
+
+    }else if(openLink){
+
+      openLink.hidden=true;
+
+      openLink.removeAttribute('href');
+
+    }
+
+    panel.classList.remove('show');
+
+    requestAnimationFrame(()=>panel.classList.add('show'));
+
+  });
+
+});
     }else{
       openLink.hidden=true;
       openLink.removeAttribute('href');
