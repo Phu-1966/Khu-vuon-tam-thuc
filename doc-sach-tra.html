@@ -33,7 +33,7 @@ button{border:1px solid #b7a27f;background:#fffaf0;color:#29443a;padding:8px 13p
  const status=document.getElementById('status'), page=document.getElementById('page');
  const prev=document.getElementById('prev'), next=document.getElementById('next');
  const jumpBack=document.getElementById('jumpBack'), jumpForward=document.getElementById('jumpForward');
- const bookUrl=new URL('./books/RUOU_NEP_CAI_HAO_PHAM_EPUB_V1.epub',window.location.href).href;
+ const bookUrl=new URL('./books/TRA_HAO_PHAM_EPUB_V7.epub',window.location.href).href;
  const timeout=(promise,ms,label)=>Promise.race([promise,new Promise((_,reject)=>setTimeout(()=>reject(new Error(label)),ms))]);
  try{
   status.textContent='Đang kiểm tra bộ đọc sách…';
