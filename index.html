@@ -252,6 +252,7 @@ body{margin:0;background:var(--deep);color:var(--paper);font-family:Georgia,"Tim
  <button class="leaf-button" 
   data-title="Tơ hồng" 
   data-note="Sợi duyên mảnh giữa có và không." 
+  data-epub="books/TO_HONG_HAO_PHAM_EPUB_V6.epub"
   aria-label="Xem sách Tơ hồng">
   <img src="la-09.png" alt="Chiếc lá Việt Nam trên mặt hồ">
   <span class="leaf-label">Tơ hồng</span>
@@ -365,6 +366,14 @@ document.querySelectorAll('.leaf-button').forEach(btn=>{
   openLink.href='doc-sach-noi-buon-cua-rung.html';
 
   openLink.textContent='Mở sách Nỗi Buồn Của Rừng';
+
+  openLink.hidden=false;    
+
+       }else if(title.trim()==='Tơ hồng'){
+
+  openLink.href='doc-sach-to-hong.html';
+
+  openLink.textContent='Mở sách Tơ Hồng';
 
   openLink.hidden=false;    
        
