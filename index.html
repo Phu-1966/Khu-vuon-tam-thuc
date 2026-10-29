@@ -347,14 +347,6 @@ document.querySelectorAll('.leaf-button').forEach(btn=>{
 
     if(openLink && btn.dataset.epub){
 
-     }else if(title.trim()==='Nước mắm'){
-
-  openLink.href='./doc-sach-nuoc-mam.html';
-
-  openLink.textContent='Mở sách Nước mắm →';
-
-  openLink.hidden=false;
-
       if(title==='Ủ tương'){
 
         openLink.href='doc-sach-u-tuong.html';
@@ -370,6 +362,14 @@ document.querySelectorAll('.leaf-button').forEach(btn=>{
 }else if(title==='Trầm tích của tâm'){
 
   openLink.href='doc-sach-tram-tich-cua-tam.html';
+
+          }else if(title.trim()==='Nước mắm'){
+
+  openLink.href='./doc-sach-nuoc-mam.html';
+
+  openLink.textContent='Mở sách Nước mắm →';
+
+  openLink.hidden=false;
 
       }else if(title==='Ve rỗng'){
 
