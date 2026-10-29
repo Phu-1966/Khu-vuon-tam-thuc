@@ -232,7 +232,7 @@ body{margin:0;background:var(--deep);color:var(--paper);font-family:Georgia,"Tim
  </button>
  
  <button class="leaf-button" 
-  data-title="Tơ tằm và khoảng rỗng" 
+  data-title="Tơ Tằm Và Khoảng Rỗng"
   data-note="Sợi tơ mảnh đi qua khoảng không." 
   data-epub="books/TO_TAM_VA_KHOANG_RONG_HAO_PHAM_EPUB_V5.epub"
   aria-label="Xem sách Tơ tằm và khoảng rỗng">
@@ -351,9 +351,14 @@ document.querySelectorAll('.leaf-button').forEach(btn=>{
 
   openLink.href='doc-sach-ve-rong.html';
 
-       }else if(title==='tơ tằm và khoảng rỗng'){
+}else if(title.toLowerCase()==='tơ tằm và khoảng rỗng'){
 
   openLink.href='doc-sach-to-tam-va-khoang-rong.html';
+
+  openLink.textContent='Mở sách Tơ Tằm Và Khoảng Rỗng';
+
+  openLink.hidden=false;
+       
        
 }else{
 
