@@ -52,6 +52,35 @@ button{border:1px solid #b7a27f;background:#fffaf0;color:#29443a;padding:8px 13p
   const book=ePub(data);
   const rendition=book.renderTo('viewer',{width:'100%',height:'100%',flow:'paginated',spread:'none',manager:'default'});
   rendition.themes.default({'body':{'font-family':'Georgia, "Times New Roman", serif','font-size':'1.18em','line-height':'1.75','color':'#26352e','padding':'0 5% !important'},'p':{'text-align':'justify','line-height':'1.75'}});
+  rendition.hooks.content.register(contents=>{
+
+  try{
+
+    const doc=contents.document;
+
+    const style=doc.createElement('style');
+
+    style.textContent=`
+
+      h2{
+
+        break-before: column !important;
+
+        page-break-before: always !important;
+
+      }
+
+    `;
+
+    doc.head.appendChild(style);
+
+  }catch(e){
+
+    console.warn('Không thể áp dụng ngắt trang:',e);
+
+  }
+
+});
   // Remove only the printed table-of-contents entry, not a standalone author section.
   rendition.hooks.content.register(contents=>{
    try {
@@ -63,6 +92,7 @@ button{border:1px solid #b7a27f;background:#fffaf0;color:#29443a;padding:8px 13p
       else el.remove();
      }
     });
+    
    } catch(e) { console.warn('Không thể lọc mục Về tác giả:',e); }
   });
   let sectionPages=[];
