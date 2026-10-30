@@ -324,6 +324,7 @@ body{margin:0;background:var(--deep);color:var(--paper);font-family:Georgia,"Tim
  <button class="leaf-button" 
   data-title="Chiến kê" 
   data-note="Một dáng vẻ mạnh mẽ của đời sống." 
+  data-epub="books/CHIEN_KE_HAO_PHAM_EPUB_V2.epub"
   aria-label="Xem sách Chiến kê">
   <img src="la-13.png" alt="Chiếc lá Việt Nam trên mặt hồ">
   <span class="leaf-label">Chiến kê</span>
@@ -461,6 +462,14 @@ document.querySelectorAll('.leaf-button').forEach(btn=>{
   openLink.textContent='Mở sách Phiến Đá Biết Thở';
 
   openLink.hidden=false;
+       
+    }else if(title.trim().toLowerCase()==='chiến kê'){
+
+  openLink.href='doc-sach-chien-ke.html';
+
+  openLink.textContent='Mở sách Chiến Kê';
+
+  openLink.hidden=false;   
        
 }else{
 
