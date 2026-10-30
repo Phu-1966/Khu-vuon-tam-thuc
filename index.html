@@ -304,7 +304,38 @@ body{margin:0;background:var(--deep);color:var(--paper);font-family:Georgia,"Tim
 
 </div>
  
-<div class="leaf-field"><button class="leaf-button" data-title="Tâm thế Hoàng Đàn" data-note="Hương gỗ trầm lặng và bền lâu." aria-label="Xem sách Tâm thế Hoàng Đàn"><img src="la-11.png" alt="Chiếc lá Việt Nam trên mặt hồ"><span class="leaf-label">Tâm thế Hoàng Đàn</span></button><button class="leaf-button" data-title="Phiến đá biết thở" data-note="Sự sống thầm thì trong điều tưởng như bất động." aria-label="Xem sách Phiến đá biết thở"><img src="la-12.png" alt="Chiếc lá Việt Nam trên mặt hồ"><span class="leaf-label">Phiến đá biết thở</span></button><button class="leaf-button" data-title="Chiến kê" data-note="Một dáng vẻ mạnh mẽ của đời sống." aria-label="Xem sách Chiến kê"><img src="la-13.png" alt="Chiếc lá Việt Nam trên mặt hồ"><span class="leaf-label">Chiến kê</span></button><button class="leaf-button" data-title="Con cua" data-note="Một sinh linh nhỏ bé bên bờ nước." aria-label="Xem sách Con cua"><img src="la-14.png" alt="Chiếc lá Việt Nam trên mặt hồ"><span class="leaf-label">Con cua</span></button></div>
+<div class="leaf-field">
+ <button class="leaf-button" 
+  data-title="Tâm thế Hoàng Đàn" 
+  data-note="Hương gỗ trầm lặng và bền lâu." 
+  data-epub="books/TAM_THE_HOANG_DAN_HAO_PHAM_V3.epub"
+  aria-label="Xem sách Tâm thế Hoàng Đàn">
+  <img src="la-11.png" alt="Chiếc lá Việt Nam trên mặt hồ">
+  <span class="leaf-label">Tâm thế Hoàng Đàn</span>
+ </button>
+ <button class="leaf-button" 
+  data-title="Phiến đá biết thở" 
+  data-note="Sự sống thầm thì trong điều tưởng như bất động." 
+  aria-label="Xem sách Phiến đá biết thở">
+  <img src="la-12.png" alt="Chiếc lá Việt Nam trên mặt hồ">
+  <span class="leaf-label">Phiến đá biết thở</span>
+ </button>
+ <button class="leaf-button" 
+  data-title="Chiến kê" 
+  data-note="Một dáng vẻ mạnh mẽ của đời sống." 
+  aria-label="Xem sách Chiến kê">
+  <img src="la-13.png" alt="Chiếc lá Việt Nam trên mặt hồ">
+  <span class="leaf-label">Chiến kê</span>
+ 
+ </button>
+ <button class="leaf-button" 
+  data-title="Con cua" 
+  data-note="Một sinh linh nhỏ bé bên bờ nước." 
+  aria-label="Xem sách Con cua">
+  <img src="la-14.png" alt="Chiếc lá Việt Nam trên mặt hồ">
+  <span class="leaf-label">Con cua</span>
+ </button>
+</div>
 <div class="leaf-note">Chạm vào một chiếc lá để gặp cuốn sách</div>
 <div class="book-panel" aria-live="polite"><strong></strong><span></span></div>
 </section>
@@ -406,6 +437,13 @@ document.querySelectorAll('.leaf-button').forEach(btn=>{
   openLink.textContent='Mở sách Tiếng bổi của rỗng không';
 
   openLink.hidden=false;      
+    }else if(title.trim()==='Tâm thế hoàng đàn'){
+
+  openLink.href='doc-sach-tam-the-hoang-dan.html';
+
+  openLink.textContent='Mở sách Tâm thế hoàng đàn';
+
+  openLink.hidden=false;  
        
 }else{
 
