@@ -1,3 +1,5 @@
+
+
 export default {
 
   async fetch(request, env) {
@@ -20,13 +22,67 @@ export default {
 
     }
 
+    // Lưu lại đường dẫn bên ngoài trước khi bỏ tiền tố.
+
+    const originalUrl = new URL(url);
+
+    // Chuyển đường dẫn về thư mục gốc của Assets.
+
     url.pathname = url.pathname.slice(prefix.length) || "/";
 
-    return env.ASSETS.fetch(
+    const response = await env.ASSETS.fetch(
 
       new Request(url.toString(), request)
 
     );
+
+    // Giữ tiền tố /ho-nuoc/ nếu Assets trả về redirect.
+
+    const location = response.headers.get("Location");
+
+    if (
+
+      location &&
+
+      [301, 302, 303, 307, 308].includes(response.status)
+
+    ) {
+
+      const redirectUrl = new URL(location, url);
+
+      if (
+
+        redirectUrl.origin === originalUrl.origin &&
+
+        !redirectUrl.pathname.startsWith(prefix + "/") &&
+
+        redirectUrl.pathname !== prefix
+
+      ) {
+
+        redirectUrl.pathname =
+
+          prefix + redirectUrl.pathname;
+
+        const headers = new Headers(response.headers);
+
+        headers.set("Location", redirectUrl.toString());
+
+        return new Response(response.body, {
+
+          status: response.status,
+
+          statusText: response.statusText,
+
+          headers
+
+        });
+
+      }
+
+    }
+
+    return response;
 
   }
 
