@@ -357,152 +357,101 @@ body{margin:0;background:var(--deep);color:var(--paper);font-family:Georgia,"Tim
 </section>
 <footer class="footer">KHU VƯỜN TÂM THỨC · MỘT KHOẢNG LẶNG</footer>
 <script>
-const pondVideo=document.getElementById('hoNuocVideo');
-// Safari/iPhone: keep muted inline autoplay, and retain the poster if autoplay is restricted.
-if(pondVideo){pondVideo.muted=true;const attemptPlay=pondVideo.play();if(attemptPlay&&typeof attemptPlay.catch==='function')attemptPlay.catch(()=>{});}
-document.querySelectorAll('.leaf-button').forEach(btn=>{
+const pondVideo = document.getElementById('hoNuocVideo');
 
-  btn.addEventListener('click',()=>{
+// Safari/iPhone: giữ video chạy muted và inline.
 
-    const section=btn.closest('.pond');
+if (pondVideo) {
 
-    section.querySelectorAll('.leaf-button').forEach(x=>{
+  pondVideo.muted = true;
 
-      x.classList.remove('selected');
+  const attemptPlay = pondVideo.play();
 
-      x.setAttribute('aria-pressed','false');
+  if (attemptPlay && typeof attemptPlay.catch === 'function') {
+
+    attemptPlay.catch(() => {});
+
+  }
+
+}
+
+// Đường dẫn đọc sách: luôn nằm trong thư mục /ho-nuoc/
+
+const readerPages = {
+
+  'Nước mắm': 'doc-sach-nuoc-mam.html',
+
+  'Ủ tương': 'doc-sach-u-tuong.html',
+
+  'Rượu nếp cái': 'doc-sach-ruou-nep-cai.html',
+
+  'Trà': 'doc-sach-tra.html',
+
+  'Trầm tích của tâm': 'doc-sach-tram-tich-cua-tam.html',
+
+  'Ve rỗng': 'doc-sach-ve-rong.html',
+
+  'Tơ Tằm Và Khoảng Rỗng': 'doc-sach-to-tam-va-khoang-rong.html',
+
+  'Nỗi buồn của rừng': 'doc-sach-noi-buon-cua-rung.html',
+
+  'Tơ hồng': 'doc-sach-to-hong.html',
+
+  'Tiếng bổi của rỗng không': 'doc-sach-tieng-boi-cua-rong-khong.html',
+
+  'Tâm thế Hoàng Đàn': 'doc-sach-tam-the-hoang-dan.html',
+
+  'Phiến đá biết thở': 'doc-sach-phien-da-biet-tho.html',
+
+  'Chiến kê': 'doc-sach-chien-ke.html',
+
+  'Cua đá': 'doc-sach-cua-da.html'
+
+};
+
+document.querySelectorAll('.leaf-button').forEach(btn => {
+
+  btn.addEventListener('click', () => {
+
+    const section = btn.closest('.pond');
+
+    section.querySelectorAll('.leaf-button').forEach(item => {
+
+      item.classList.remove('selected');
+
+      item.setAttribute('aria-pressed', 'false');
 
     });
 
     btn.classList.add('selected');
 
-    btn.setAttribute('aria-pressed','true');
+    btn.setAttribute('aria-pressed', 'true');
 
-    const panel=section.querySelector('.book-panel');
+    const panel = section.querySelector('.book-panel');
 
-    panel.querySelector('strong').textContent=btn.dataset.title;
+    const title = btn.dataset.title.trim();
 
-    panel.querySelector('span').textContent=btn.dataset.note;
+    panel.querySelector('strong').textContent = title;
 
-    const openLink=panel.querySelector('.book-open');
+    panel.querySelector('span').textContent = btn.dataset.note;
 
-    const title=btn.dataset.title.trim();
+    const openLink = panel.querySelector('.book-open');
 
-    if(openLink && btn.dataset.epub){
+    const page = readerPages[title];
 
-      if(title==='Ủ tương'){
+    if (openLink && page) {
 
-        openLink.href='doc-sach-u-tuong.html';
+      openLink.href = '/ho-nuoc/' + page;
 
-      }else if(title==='Rượu nếp cái'){
+      openLink.textContent = 'Mở sách ' + title + ' →';
 
-        openLink.href='doc-sach-ruou-nep-cai.html';
+      openLink.setAttribute('aria-label', 'Mở sách ' + title);
 
-}else if(title==='Trà'){
+      openLink.hidden = false;
 
-  openLink.href='doc-sach-tra.html';
+    } else if (openLink) {
 
-}else if(title==='Trầm tích của tâm'){
-
-  openLink.href='doc-sach-tram-tich-cua-tam.html';
-       }else if(title.trim()==='Nước mắm'){
-
-  openLink.href='doc-sach-nuoc-mam.html';
-
-  openLink.textContent='Mở sách Nước mắm';
-
-  openLink.hidden=false;
-
-      }else if(title==='Ve rỗng'){
-
-  openLink.href='doc-sach-ve-rong.html';
-
-}else if(title.toLowerCase()==='tơ tằm và khoảng rỗng'){
-
-  openLink.href='doc-sach-to-tam-va-khoang-rong.html';
-
-  openLink.textContent='Mở sách Tơ Tằm Và Khoảng Rỗng';
-
-  openLink.hidden=false;
-       
-   }else if(title.trim()==='Nỗi buồn của rừng'){
-
-  openLink.href='doc-sach-noi-buon-cua-rung.html';
-
-  openLink.textContent='Mở sách Nỗi Buồn Của Rừng';
-
-  openLink.hidden=false;    
-
-       }else if(title.trim()==='Tơ hồng'){
-
-  openLink.href='doc-sach-to-hong.html';
-
-  openLink.textContent='Mở sách Tơ Hồng';
-
-  openLink.hidden=false;    
-
-      }else if(title.trim()==='Tiếng bổi của rỗng không'){
-
-  openLink.href='doc-sach-tieng-boi-cua-rong-khong.html';
-
-  openLink.textContent='Mở sách Tiếng bổi của rỗng không';
-
-  openLink.hidden=false;      
-}else if(title.trim().toLowerCase()==='tâm thế hoàng đàn'){
-
-  openLink.href='doc-sach-tam-the-hoang-dan.html';
-
-  openLink.textContent='Mở sách Tâm Thế Hoàng Đàn';
-
-  openLink.hidden=false;
-       
-  }else if(title.trim().toLowerCase()==='phiến đá biết thở'){
-
-  openLink.href='doc-sach-phien-da-biet-tho.html';
-
-  openLink.textContent='Mở sách Phiến Đá Biết Thở';
-
-  openLink.hidden=false;
-       
-    }else if(title.trim().toLowerCase()==='chiến kê'){
-
-  openLink.href='doc-sach-chien-ke.html';
-
-  openLink.textContent='Mở sách Chiến Kê';
-
-  openLink.hidden=false;   
-
-          }else if(title.trim().toLowerCase()==='cua đá'){
-
-  openLink.href='doc-sach-cua-da.html';
-
-  openLink.textContent='Mở sách Cua Đá';
-
-  openLink.hidden=false;   
-}else{
-
-  openLink.removeAttribute('href');
-
-}
-
-
-      if(openLink.hasAttribute('href')){
-
-        openLink.hidden=false;
-
-        openLink.textContent='Mở sách '+title+' →';
-
-        openLink.setAttribute('aria-label','Mở sách '+title);
-
-      }else{
-
-        openLink.hidden=true;
-
-      }
-
-    }else if(openLink){
-
-      openLink.hidden=true;
+      openLink.hidden = true;
 
       openLink.removeAttribute('href');
 
@@ -510,7 +459,7 @@ document.querySelectorAll('.leaf-button').forEach(btn=>{
 
     panel.classList.remove('show');
 
-    requestAnimationFrame(()=>panel.classList.add('show'));
+    requestAnimationFrame(() => panel.classList.add('show'));
 
   });
 
