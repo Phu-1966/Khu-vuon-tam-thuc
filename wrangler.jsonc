@@ -5,7 +5,7 @@
   "compatibility_date": "2026-09-04",
 
   "main": "worker.js",
-
+"preview_urls": true,
   "assets": {
 
     "directory": ".",
