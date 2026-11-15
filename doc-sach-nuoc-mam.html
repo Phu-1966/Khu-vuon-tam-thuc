@@ -72,7 +72,7 @@ button{border:1px solid #b7a27f;background:#fffaf0;color:#29443a;padding:8px 13p
 
 const STORAGE_KEY = "ho-nuoc-reading-" + BOOK_ID;
 
-let restoringReadingPosition = true;v
+let restoringReadingPosition = true;
   function updateCounter(loc){
    if(!loc || !loc.start || !loc.start.displayed){page.textContent='Đang đọc';return;}
    const idx=Number.isInteger(loc.start.index)?loc.start.index:0;
