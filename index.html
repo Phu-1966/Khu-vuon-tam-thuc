@@ -129,6 +129,33 @@ body{margin:0;background:var(--deep);color:var(--paper);font-family:Georgia,"Tim
   🏡 Về trang chủ
 
 </a>
+ <button id="hnAudioButton" type="button"
+
+  aria-label="Bật âm thanh Hồ Nước"
+
+  aria-pressed="false"
+
+  style="position:fixed;top:80px;right:12px;z-index:9999;
+
+  padding:10px 14px;border-radius:24px;
+
+  background:rgba(248,240,226,.94);color:#61472f;
+
+  border:1px solid rgba(97,71,47,.25);
+
+  font:600 13px/1.2 system-ui,sans-serif;
+
+  box-shadow:0 2px 10px rgba(40,25,12,.16);cursor:pointer;">
+
+  🔇 Âm thanh
+
+</button>
+
+<audio id="hnAmbientAudio"
+
+  src="ho-nuoc-pond-ambience-crickets.mp3"
+
+  loop preload="none"></audio>
  <header class="topbar"><div class="brand">HỒ NƯỚC</div><div class="mood">MỘT KHOẢNG LẶNG</div></header>
 <section class="hero" aria-label="Mặt hồ mùa thu">
   <video id="hoNuocVideo" autoplay muted loop playsinline webkit-playsinline preload="metadata" poster="ho-nuoc-poster.jpg" aria-label="Video mặt hồ yên tĩnh"><source src="ho-nuoc-hero.mp4" type="video/mp4"></video>
@@ -357,6 +384,47 @@ body{margin:0;background:var(--deep);color:var(--paper);font-family:Georgia,"Tim
 </section>
 <footer class="footer">KHU VƯỜN TÂM THỨC · MỘT KHOẢNG LẶNG</footer>
 <script>
+ // Âm thanh nền Hồ Nước
+
+const hnAudio = document.getElementById('hnAmbientAudio');
+
+const hnAudioButton = document.getElementById('hnAudioButton');
+
+hnAudio.volume = 0.22;
+
+hnAudioButton.addEventListener('click', async () => {
+
+  if (hnAudio.paused) {
+
+    try {
+
+      await hnAudio.play();
+
+      hnAudioButton.textContent = '🔊 Âm thanh';
+
+      hnAudioButton.setAttribute('aria-pressed', 'true');
+
+      hnAudioButton.setAttribute('aria-label', 'Tắt âm thanh Hồ Nước');
+
+    } catch (error) {
+
+      console.log('Không thể phát âm thanh:', error);
+
+    }
+
+  } else {
+
+    hnAudio.pause();
+
+    hnAudioButton.textContent = '🔇 Âm thanh';
+
+    hnAudioButton.setAttribute('aria-pressed', 'false');
+
+    hnAudioButton.setAttribute('aria-label', 'Bật âm thanh Hồ Nước');
+
+  }
+
+});
 const pondVideo = document.getElementById('hoNuocVideo');
 
 // Safari/iPhone: giữ video chạy muted và inline.
