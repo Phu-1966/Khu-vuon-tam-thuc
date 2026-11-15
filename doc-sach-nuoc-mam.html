@@ -132,7 +132,23 @@ let restoringReadingPosition = true;
    meter.destroy(); measure.remove();
    // Restore the reader to the beginning after background pagination measurement.
    await rendition.display();
-   status.textContent='Sách đã mở. Dùng mũi tên hoặc nút ±10 để lật trang.';
+        const savedCfi=localStorage.getItem(STORAGE_KEY);
+
+      if(savedCfi && confirm('Bạn có muốn đọc tiếp từ vị trí đang đọc dở không?')){
+
+        await rendition.display(savedCfi);
+
+      } else {
+
+        localStorage.removeItem(STORAGE_KEY);
+
+        await rendition.display();
+
+      }
+
+      restoringReadingPosition=false;
+
+      status.textContent='Sách đã mở. Dùng mũi tên hoặc nút ±10 để lật trang.';
   } catch(measureError){
    console.warn('Không tính được tổng trang:',measureError);
    status.textContent='Sách đã mở. Dùng mũi tên hoặc nút ±10 để lật trang.';
