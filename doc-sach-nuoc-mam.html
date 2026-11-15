@@ -68,6 +68,11 @@ button{border:1px solid #b7a27f;background:#fffaf0;color:#29443a;padding:8px 13p
   let sectionPages=[];
   let totalBookPages=0;
   let currentSpineIndex=0;
+  const BOOK_ID = "ho-nuoc-nuoc-mam-v4";
+
+const STORAGE_KEY = "ho-nuoc-reading-" + BOOK_ID;
+
+let restoringReadingPosition = true;v
   function updateCounter(loc){
    if(!loc || !loc.start || !loc.start.displayed){page.textContent='Đang đọc';return;}
    const idx=Number.isInteger(loc.start.index)?loc.start.index:0;
@@ -78,7 +83,21 @@ button{border:1px solid #b7a27f;background:#fffaf0;color:#29443a;padding:8px 13p
    else page.textContent='Trang '+localPage+' · chương '+(idx+1);
    prev.disabled=!!loc.atStart; next.disabled=!!loc.atEnd;
   }
-  rendition.on('relocated',updateCounter);
+  rendition.on('relocated',loc=>{
+
+   updateCounter(loc);
+
+   const cfi=loc && loc.start && loc.start.cfi;
+
+   if(cfi && !restoringReadingPosition){
+
+    try { localStorage.setItem(STORAGE_KEY,cfi); }
+
+    catch(e) { console.warn('Không thể lưu vị trí đọc:',e); }
+
+   }
+
+  });
   prev.addEventListener('click',()=>rendition.prev());
   next.addEventListener('click',()=>rendition.next());
   async function jumpPages(delta){
